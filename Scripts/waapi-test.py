@@ -1,0 +1,1 @@
+from waapi import WaapiClient, CannotConnectToWaapiException
