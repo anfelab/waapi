@@ -46,6 +46,7 @@ def get_selected_items():
         show_error_message("Could not connect to Wwise Authoring API.")
         return None
 
+
 def set_waapi_port(ip="127.0.0.1", port=8080):
     waapi_port = f"ws://{ip}:{port}/waapi"
     return waapi_port
