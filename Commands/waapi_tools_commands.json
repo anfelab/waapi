@@ -6,7 +6,7 @@
       "displayName": "Rename Selected Objects with Clipboard Contents",
       "program": "python",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
-      "args": "\"${WwiseUserAddons}/Scripts/rename_selected_objects_with_clipboard.py\" ${id}",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/rename_selected_objects_with_clipboard.py\" ${id}",
       "redirectOutputs": true,
       "contextMenu": {
         "basePath": "WAAPI/Rename Tools"
@@ -17,7 +17,7 @@
       "displayName": "Copy selected item X times",
       "program": "python",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
-      "args": "\"${WwiseUserAddons}/Scripts/copy_objects.py\" ${id}",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/copy_objects.py\" ${id}",
       "redirectOutputs": true,
       "contextMenu": {
         "basePath": "WAAPI"
@@ -28,7 +28,7 @@
       "displayName": "Rename Selected Objects with Input",
       "program": "python",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
-      "args": "\"${WwiseUserAddons}/Scripts/rename_with_indexing.py\" ${id}",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/rename_with_indexing.py\" ${id}",
       "redirectOutputs": true,
       "contextMenu": {
         "basePath": "WAAPI/Rename Tools"
