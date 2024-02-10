@@ -11,6 +11,17 @@
       "contextMenu": {
         "basePath": "WAAPI/Rename Tools"
       }
+    },
+    {
+      "id": "waapi.copy_objects",
+      "displayName": "Set Random Container",
+      "program": "python",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/Scripts/copy_objects.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI/Rename Tools"
+      }
     }
   ]
 }
