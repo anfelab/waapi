@@ -23,6 +23,7 @@ def rename_objects():
                     "value": f"{new_name}{suffix}"
                 }
                 client.call("ak.wwise.core.object.setName", args)
+                client.disconnect()
         except CannotConnectToWaapiException:
             show_error_message("Could not connect to Wwise Authoring API.")
             return None

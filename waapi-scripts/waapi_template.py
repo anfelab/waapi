@@ -4,12 +4,9 @@ from wwise_helpers import *
 waapi_port = set_waapi_port()
 
 def main():
-    selected_items = get_selected_items()
-    if not selected_items:
-        show_error_message("No items selected in Wwise.")
-        return
-    for item in selected_items: #idx 0 for id, 1 for name
-        print (item[1])
-        
+    with WaapiClient(waapi_port) as client:
+        result = client.call("ak.wwise.core.getInfo")
+        print(result)
+    
 if __name__ == "__main__":
     main()

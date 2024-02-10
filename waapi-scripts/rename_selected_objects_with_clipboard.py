@@ -63,6 +63,7 @@ def rename_selected_items(selected_items, new_names):
                     "value": new_name
                 }
                 client.call("ak.wwise.core.object.setName", args)
+                client.disconnect()
             
             return True  # Indicate success
     except CannotConnectToWaapiException:

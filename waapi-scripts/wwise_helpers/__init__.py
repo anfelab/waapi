@@ -63,6 +63,7 @@ def ask_user_input_str(title="Input", message="Enter the new name"):
 
 def set_waapi_port(ip="127.0.0.1", port=8080):
     waapi_port = f"ws://{ip}:{port}/waapi"
+
     return waapi_port
 
 def get_selected_items_type(type):
@@ -75,11 +76,14 @@ def get_selected_items_type(type):
             if "objects" in result:
                 for obj in result["objects"]:
                     selection = obj[type]
-                    selected_items.append((selection))
-                    print(selected_items)
+                    selected_items.append((selection)) 
+                    client.disconnect()
                 return selected_items
+                
             else:
+                client.disconnect()
                 return None
+                
     except CannotConnectToWaapiException:
         show_error_message("Could not connect to Wwise Authoring API.")
         return None
