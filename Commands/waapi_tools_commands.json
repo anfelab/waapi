@@ -3,7 +3,7 @@
   "commands": [
     {
       "id": "waapi.rename_selected_objects_with_clipboard",
-      "displayName": "Set Random Container",
+      "displayName": "Rename Selected Objects with Clipboard Contents",
       "program": "python",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/Scripts/rename_selected_objects_with_clipboard.py\" ${id}",
@@ -14,10 +14,21 @@
     },
     {
       "id": "waapi.copy_objects",
-      "displayName": "Set Random Container",
+      "displayName": "Copy selected item X times",
       "program": "python",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/Scripts/copy_objects.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI"
+      }
+    },
+    {
+      "id": "waapi.rename_with_indexing",
+      "displayName": "Rename Selected Objects with Input",
+      "program": "python",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/Scripts/rename_with_indexing.py\" ${id}",
       "redirectOutputs": true,
       "contextMenu": {
         "basePath": "WAAPI/Rename Tools"
