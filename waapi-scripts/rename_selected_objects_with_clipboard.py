@@ -2,8 +2,11 @@ import pyperclip
 import tkinter as tk
 from tkinter import messagebox
 from waapi import WaapiClient, CannotConnectToWaapiException
+import wwise_helpers
 
 # Function to get clipboard content
+waapi_port = wwise_helpers.set_waapi_port()
+
 def get_clipboard_content():
     content = pyperclip.paste()  # Get content from clipboard
     if content:
@@ -28,7 +31,7 @@ def show_success_message(message):
 # Function to get selected items from Wwise
 def get_selected_items():
     try:
-        with WaapiClient() as client:
+        with WaapiClient(waapi_port) as client:
             args = {
                 "options": {"return":["id", "name"]}  # Correct syntax for return fields
             }
@@ -49,7 +52,7 @@ def get_selected_items():
 # Function to rename selected items in Wwise
 def rename_selected_items(selected_items, new_names):
     try:
-        with WaapiClient() as client:
+        with WaapiClient(waapi_port) as client:
             if len(selected_items) != len(new_names):
                 show_error_message("The number of selected items and clipboard names do not match.")
                 return False
