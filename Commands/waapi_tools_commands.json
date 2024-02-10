@@ -1,11 +1,16 @@
+{
+  "version": 2,
+  "commands": [
     {
-      "id": "rename_selected_objects_with_clipboard",
+      "id": "waapi.rename_selected_objects_with_clipboard",
       "displayName": "Set Random Container",
       "program": "python",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
-      "args": "\"${WwiseUserAddons}/waapi-scripts/rename_selected_objects_with_clipboard.py\" ${id}",
+      "args": "\"${WwiseUserAddons}/Scripts/rename_selected_objects_with_clipboard.py\" ${id}",
       "redirectOutputs": true,
       "contextMenu": {
-        "basePath": "WAAPI"
+        "basePath": "WAAPI/Rename Tools"
       }
     }
+  ]
+}
