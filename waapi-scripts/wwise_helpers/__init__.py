@@ -22,6 +22,12 @@ def show_success_message(message):
     messagebox.showinfo("Success", message)
     root.destroy()
 
+def show_message(title,message):
+    root = tk.Tk()
+    root.withdraw()
+    messagebox.showinfo(title, message)
+    root.destroy()
+
 def get_selected_items():
     try:
         with WaapiClient() as client:

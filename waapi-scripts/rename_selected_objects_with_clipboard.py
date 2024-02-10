@@ -4,9 +4,9 @@ from tkinter import messagebox
 from waapi import WaapiClient, CannotConnectToWaapiException
 import wwise_helpers
 
-# Function to get clipboard content
+#Set the WAAPI port
 waapi_port = wwise_helpers.set_waapi_port()
-
+# Function to get clipboard content
 def get_clipboard_content():
     content = pyperclip.paste()  # Get content from clipboard
     if content:
