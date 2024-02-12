@@ -34,5 +34,17 @@
         "basePath": "WAAPI/Rename Tools"
       }
     }
+    ,
+    {
+      "id": "waapi.create_parent_with_name",
+      "displayName": "Create parent of any type for items with similar names.",
+      "program": "python",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/create_parent_with_name.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI"
+      }
+    }
   ]
 }
