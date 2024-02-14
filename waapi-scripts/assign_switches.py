@@ -105,16 +105,13 @@ def main():
                     client.disconnect()
                 current_children = get_children(client, container_id) #Look for preexisting containers
                 switch_list = get_switches(client, switch_group_id)
-                check_if_container_is_assigned(client, container_id,switch_list)
+                unnasigned_switches = check_if_container_is_assigned(client, container_id,switch_list)
 
                 if current_children:
-                    for current_child in current_children:
-                        current_child_id = current_child["id"]
-                        unnasigned_switches = check_if_container_is_assigned(client,current_child_id,switch_list)
-                        for unnasigned_switch in unnasigned_switches:
-                            unnasigned_switch_id = unnasigned_switch["id"]
-                            unnasigned_switch_name = unnasigned_switch["name"]
-                            create_result = create_container(client,container_id,container_name,unnasigned_switch_name,unnasigned_switch_id)              
+                    for unnasigned_switch in unnasigned_switches:
+                        unnasigned_switch_id = unnasigned_switch["id"]
+                        unnasigned_switch_name = unnasigned_switch["name"]
+                        create_result = create_container(client,container_id,container_name,unnasigned_switch_name,unnasigned_switch_id)              
                     show_success_message(f"Succesfully assigned containers for all switches!")
                 else:
                     switch_list = get_switches(client, switch_group_id)
