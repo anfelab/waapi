@@ -45,6 +45,17 @@
       "contextMenu": {
         "basePath": "WAAPI"
       }
+    },
+    {
+      "id": "waapi.assign_switches",
+      "displayName": "Assign random containers for all switches keeping the existing assignments",
+      "program": "python",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/assign_switches.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI"
+      }
     }
   ]
 }
