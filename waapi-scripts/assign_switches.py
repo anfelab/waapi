@@ -10,10 +10,14 @@ def set_client(ip = "127.0.0.1", port = 8080):
 
 def get_selected_items(client):
     selected_items = []
-    args = {"options": {"return":["id", "name","SwitchGroupOrStateGroup"]}}
+    args = {"options": {"return":["id", "name","SwitchGroupOrStateGroup","type"]}}
     result = client.call("ak.wwise.ui.getSelectedObjects", args)
     for item in result["objects"]:
         selected_items.append(item)
+        if item["type"] != "SwitchContainer":
+            show_error_message("No Switch Container selected!")
+            client.disconnect()
+            break
     return selected_items
 
 def get_children(client, container_id):
@@ -37,11 +41,8 @@ def check_if_container_is_assigned(client,container_id,switch_list):  #(client, 
         for assingment in result["return"]:
             assigned_switches.append(assingment["stateOrSwitch"])
     else:
-        print(f"No assignments found")
-
-    print(switch_list)
+        show_error_message(f"No assignments found")
     unassaigned_switches = remove_values(assigned_switches,switch_list)
-    print(unassaigned_switches, len(unassaigned_switches))
     return unassaigned_switches
 
 def remove_values(list1, list2):
@@ -75,7 +76,7 @@ def create_container(client,container_id,container_name,switch_name, switch_id):
     create_result = client.call("ak.wwise.core.object.create", container_args)
     new_cont_id = create_result["id"]
     if create_result:
-        print(f"Created Random Container {new_container_name} and assigned to switch {switch_name}")
+        print(f"Created Random Container [{new_container_name}] and assigned to switch [{switch_name}]")
         assign_switch(client, new_cont_id,switch_id)
         objects_created += 1
         
@@ -112,7 +113,6 @@ def main():
                         unnasigned_switch_id = unnasigned_switch["id"]
                         unnasigned_switch_name = unnasigned_switch["name"]
                         create_result = create_container(client,container_id,container_name,unnasigned_switch_name,unnasigned_switch_id)              
-                    show_success_message(f"Succesfully assigned containers for all switches!")
                 else:
                     switch_list = get_switches(client, switch_group_id)
                     unnasigned_switches = switch_list
@@ -120,9 +120,8 @@ def main():
                         unnasigned_switch_id = unnasigned_switch["id"]
                         unnasigned_switch_name = unnasigned_switch["name"]
                         create_result = create_container(client,container_id,container_name,unnasigned_switch_name,unnasigned_switch_id)
-                    show_success_message(f"Succesfully assigned containers for all switches!")
-
             client.disconnect()
+        show_success_message(f"Succesfully assigned containers for all switches!")
              
     except CannotConnectToWaapiException:
         show_error_message("Could not connect to Waapi: Is Wwise running and Wwise Authoring API enabled?")
