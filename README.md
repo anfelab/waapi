@@ -24,7 +24,7 @@ Follow these steps to install Python and set up the necessary environment variab
 
 2. **Run the Installer**: Open the downloaded file to start the installation process. Ensure you check the box that says **Add Python X.X to PATH** before clicking **Install Now**, where X.X corresponds to the version you're installing.
 
-   ![Add Python to PATH](![image](https://github.com/anfelab/waapi/assets/57996654/76ca4a1a-5e9f-49f1-801d-c050ab798e94)
+(![image](https://github.com/anfelab/waapi/assets/57996654/76ca4a1a-5e9f-49f1-801d-c050ab798e94)
 
 
 3. **Verify Installation**: Open a command prompt and type `python --version`. If Python is installed correctly and added to your PATH, you should see the Python version printed in the terminal.
