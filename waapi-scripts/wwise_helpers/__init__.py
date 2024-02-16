@@ -3,6 +3,12 @@ import tkinter as tk
 from tkinter import messagebox, simpledialog
 from waapi import WaapiClient, CannotConnectToWaapiException
 
+def set_client(ip = "127.0.0.1", port = 8080):
+    waapi_port = f"ws://{ip}:{port}/waapi"
+    print(f"Client set to: {waapi_port}")
+    client = WaapiClient(waapi_port)
+    return client
+
 def get_clipboard_content():
     content = pyperclip.paste()
     if content:
@@ -28,22 +34,17 @@ def show_message(title,message):
     messagebox.showinfo(title, message)
     root.destroy()
 
-def get_selected_items():
-    try:
-        with WaapiClient() as client:
-            args = {"options": {"return":["id", "name"]}}
-            result = client.call("ak.wwise.ui.getSelectedObjects", args)
-            selected_items = []
-            if "objects" in result:
-                for obj in result["objects"]:
-                    obj_name = obj["name"]
-                    obj_id = obj["id"]
-                    selected_items.append((obj_id, obj_name))
-                return selected_items
-            else:
-                return None
-    except CannotConnectToWaapiException:
-        show_error_message("Could not connect to Wwise Authoring API.")
+def get_selected_items(client):
+    args = {"options": {"return":["id", "name"]}}
+    result = client.call("ak.wwise.ui.getSelectedObjects", args)
+    selected_items = []
+    if "objects" in result:
+        for obj in result["objects"]:
+            obj_name = obj["name"]
+            obj_id = obj["id"]
+            selected_items.append((obj_id, obj_name))
+        return selected_items
+    else:
         return None
 
 def ask_user_input_num(title="Input", message="Insert the number of copies"):
@@ -61,33 +62,17 @@ def ask_user_input_str(title="Input", message="Enter the new name"):
     root.destroy()
     return number_of_copies
 
-def set_waapi_port(ip="127.0.0.1", port=8080):
-    waapi_port = f"ws://{ip}:{port}/waapi"
-
-    return waapi_port
-
-def get_selected_items_type(type):
-    try:
-        waapi_port = set_waapi_port()
-        with WaapiClient(waapi_port) as client:
-            args = {"options": {"return":[type]}}
-            result = client.call("ak.wwise.ui.getSelectedObjects", args)
-            selected_items = []
-            if "objects" in result:
-                for obj in result["objects"]:
-                    selection = obj[type]
-                    selected_items.append((selection)) 
-                    client.disconnect()
-                return selected_items
-                
-            else:
-                client.disconnect()
-                return None
-                
-    except CannotConnectToWaapiException:
-        show_error_message("Could not connect to Wwise Authoring API.")
+def get_selected_items_type(client, type):
+    args = {"options": {"return":[type]}}
+    result = client.call("ak.wwise.ui.getSelectedObjects", args)
+    selected_items = []
+    if result:
+        for obj in result["objects"]:
+            selected_items.append(obj)
+        return selected_items
+    else:
         return None
-    
+                   
 def execute_func_times(func, times):
     for i in range(times):
         func()

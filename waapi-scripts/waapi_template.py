@@ -1,12 +1,16 @@
-from wwise_helpers import *
-
-#Set the WAAPI port
-waapi_port = set_waapi_port()
+from waapi import WaapiClient, CannotConnectToWaapiException
+from wwise_helpers import show_error_message, show_message, show_success_message, set_client
 
 def main():
-    with WaapiClient(waapi_port) as client:
-        result = client.call("ak.wwise.core.getInfo")
-        print(result)
+    client = set_client()
+    try:
+        with client:
+            result = client.call("ak.wwise.core.getInfo")
+            print(result)
+
+    except CannotConnectToWaapiException:
+        show_error_message("Could not connect to Wwise Authoring API.")
+        return None
     
 if __name__ == "__main__":
     main()
