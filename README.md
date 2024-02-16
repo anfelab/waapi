@@ -3,9 +3,13 @@
 Some scripts to improve the workflow in Wwise using WAAPI.
 
 Included:
+
 -Switch Assigner: Automatically assings a Random Container for every switch in a Switch group for every Switch Container selected. It will also assign any object that matches the name of the Switch.
+
 -Rename with indexing: A quick way to rename multiple objects with the same name and add the indexing automatically
+
 -Rename with Clipboard contents: Get the names from Excel or other text editor and rename the selected containers
+
 -Parent creator: Creates a parent container (of any type) for every group of items with similar names (without indexing)
 
 More in the works
