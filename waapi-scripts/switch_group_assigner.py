@@ -3,10 +3,7 @@ from wwise_helpers import show_error_message, show_message, show_success_message
 import tkinter as tk
 from tkinter import ttk
 
-# Assuming you have a WAAPI client function to fetch switch groups
 def fetch_switch_groups():
-    # Placeholder for WAAPI call to fetch switch groups
-    # This will be replaced with actual WAAPI code to get switch groups
     return ["SwitchGroup1", "SwitchGroup2", "SwitchGroup3"]
 
 def create_ui(client):
@@ -83,14 +80,44 @@ def assign_switch_group(client, switch_group_name, default_switch_name):
     for item in selected_items:
         item_id = item[0]
         item_name = item[1]
-        args = {
+        switch_group_id = get_switch_group_id(client, switch_group_name)
+        switch_id = get_switch_id(client,default_switch_name)
+        swtich_group_args = {
             "object": item_id,
-            "reference": "@SwitchGroupOrStateGroup",
-            "value":switch_group_name
+            "reference": "SwitchGroupOrStateGroup",
+            "value":switch_group_id
         }
-        result = client.call("ak.wwise.core.object.setReference", args)
-        if result:
+        switch_group_result = client.call("ak.wwise.core.object.setReference", swtich_group_args)
+        if switch_group_result:
             print(f"{item_name} assigned to {switch_group_name} Switch Group!")
+        switch_args={
+            "object": item_id,
+            "reference": "DefaultSwitchOrState",
+            "value":switch_id
+        }
+        switch_result = client.call("ak.wwise.core.object.setReference",switch_args)
+        if switch_result:
+            print(f"Default Switch set to {default_switch_name}")
+
+    show_success_message("Switch Grops Succesfully assigned!")
+
+def get_switch_group_id(client,switch_group_name):
+    waql = f'from type switchGroup where name = "{switch_group_name}"'
+    args = {
+        "waql":waql
+    }
+    result = client.call("ak.wwise.core.object.get",args)
+    switch_group_id = result["return"][0]["id"]
+    return switch_group_id
+
+def get_switch_id(client,default_switch_name):
+    waql = f'from type switch where name = "{default_switch_name}"'
+    args = {
+        "waql":waql
+    }
+    result = client.call("ak.wwise.core.object.get",args)
+    switch_id = result["return"][0]["id"]
+    return switch_id
 
 if __name__ == "__main__":
     client = set_client() 
