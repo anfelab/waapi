@@ -81,7 +81,7 @@ def assign_switch_group(client, switch_group_name, default_switch_name):
         item_id = item[0]
         item_name = item[1]
         switch_group_id = get_switch_group_id(client, switch_group_name)
-        switch_id = get_switch_id(client,default_switch_name)
+        switch_id = get_switch_id(client,default_switch_name, switch_group_name)
         swtich_group_args = {
             "object": item_id,
             "reference": "SwitchGroupOrStateGroup",
@@ -110,8 +110,8 @@ def get_switch_group_id(client,switch_group_name):
     switch_group_id = result["return"][0]["id"]
     return switch_group_id
 
-def get_switch_id(client,default_switch_name):
-    waql = f'from type switch where name = "{default_switch_name}"'
+def get_switch_id(client,default_switch_name, switch_group_name):
+    waql = f'from type switch where name = "{default_switch_name}" and parent.name = "{switch_group_name}"'
     args = {
         "waql":waql
     }
