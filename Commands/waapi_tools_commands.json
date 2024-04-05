@@ -67,6 +67,28 @@
       "contextMenu": {
         "basePath": "WAAPI"
       }
+    },
+    {
+      "id": "waapi.enable_stream",
+      "displayName": "Enable Stream for all the children of the selected items",
+      "program": "python",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/stream_enabler.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI/Stream"
+      }
+    },
+    {
+      "id": "waapi.disable_stream",
+      "displayName": "Disable Stream for all the children of the selected items",
+      "program": "python",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/stream_disabler.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI/Stream"
+      }
     }
     
   ]
