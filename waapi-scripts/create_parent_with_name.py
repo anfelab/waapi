@@ -1,12 +1,15 @@
 from waapi import WaapiClient, CannotConnectToWaapiException
-from wwise_helpers import set_client, get_selected_items, get_selected_items_type, show_error_message, show_message, show_success_message, ask_user_input_str
+from wwise_helpers import set_client, get_selected_items, get_selected_items_type, show_error_message, show_message, \
+    show_success_message, ask_user_input_str
+
 
 def get_parent(client):
-    result = get_selected_items_type(client,"parent")
+    result = get_selected_items_type(client, "parent")
     parent_list = []
     for parent in result:
         parent_list.append(parent["parent"])
     return parent_list
+
 
 def get_names_without_index(client):
     items = get_selected_items(client)  # Assuming this function returns a list of tuples (id, name)
@@ -28,7 +31,8 @@ def get_names_without_index(client):
     names_no_idx = set(names_no_idx)  # Convert to a set for uniqueness
     return names_no_idx
 
-def create_new_parent(client,container_type, parent_list, names):
+
+def create_new_parent(client, container_type, parent_list, names):
     # Define a dictionary to map abbreviations to full container names
     container_types = {
         "a": "ActorMixer",
@@ -51,12 +55,13 @@ def create_new_parent(client,container_type, parent_list, names):
                     "parent": parent["id"],
                     "type": container_type,
                     "name": name,
-                    "onNameConflict":"merge"
+                    "onNameConflict": "merge"
                 }
-                result = client.call("ak.wwise.core.object.create",args)
+                result = client.call("ak.wwise.core.object.create", args)
                 if result:
                     created_objs.append(result)
         return created_objs
+
 
 def move_objects(client, children_list, created_objs):
     parent_names = [obj["name"] for obj in created_objs]
@@ -72,15 +77,17 @@ def move_objects(client, children_list, created_objs):
                 "object": child_id,
                 "parent": parent_ids[idx_match],
             }
-            client.call("ak.wwise.core.object.move",args)
+            client.call("ak.wwise.core.object.move", args)
         else:
             print(f"No match found for '{child_name}'")
+
 
 def look_for_match(child_name, parent_names):
     for index, parent_name in enumerate(parent_names):
         if child_name.startswith(parent_name) and len(child_name) > len(parent_name):
             return True, index
     return False, -1
+
 
 def main():
     client = set_client()
@@ -107,6 +114,7 @@ def main():
             show_success_message("New parent(s) created and children moved successfully.")
     except CannotConnectToWaapiException:
         show_error_message("Could not connect to Wwise Authoring API.")
+
 
 if __name__ == "__main__":
     main()

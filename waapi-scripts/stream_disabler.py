@@ -35,6 +35,7 @@ def disable_stream(client, child_id, child_name):
         "objects": [{
             "object": child_id,
             "@IsStreamingEnabled": "False",
+            "@IsZeroLatency": "False"
         }],
 
     }

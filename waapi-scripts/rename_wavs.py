@@ -1,5 +1,14 @@
-from waapi import CannotConnectToWaapiException
+from waapi import WaapiClient, CannotConnectToWaapiException
 from wwise_helpers import show_error_message, show_message, show_success_message, set_client, get_selected_items
+
+
+def get_wav_paths(client, item_id):
+    args = {
+        "waql": "\"\\Actor-Mixer Hierarchy\" select descendants where type = 'Sound'",
+        "options": {"return": ["id, name"]}
+    }
+    result = client.call("ak.wwise.core.object.get", args)
+    print(result)
 
 
 def main():
@@ -9,7 +18,7 @@ def main():
             selected_items = get_selected_items(client)
             for item in selected_items:
                 item_id = item[0]
-                print(item_id)
+                get_wav_paths(client, item_id)
 
     except CannotConnectToWaapiException:
         show_error_message("Could not connect to Wwise Authoring API.")

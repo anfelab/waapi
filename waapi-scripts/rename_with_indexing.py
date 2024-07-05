@@ -1,11 +1,13 @@
 from waapi import WaapiClient, CannotConnectToWaapiException
 from wwise_helpers import show_error_message, ask_user_input_str, get_selected_items_type
 
-#Set the WAAPI client
+
+# Set the WAAPI client
 def set_client(ip="127.0.0.1", port=8080):
     waapi_port = f"ws://{ip}:{port}/waapi"
     client = WaapiClient(waapi_port)
     return client
+
 
 def rename_objects(client, id_list):
     new_name = ask_user_input_str()  # Get the new base name from the user once
@@ -21,12 +23,13 @@ def rename_objects(client, id_list):
         client.call("ak.wwise.core.object.setName", args)
     print(f"Renamed {total_items} items.")
 
+
 def main():
     try:
         client = set_client()
         with client:
-            id_list = get_selected_items_type(client,"id")
-            
+            id_list = get_selected_items_type(client, "id")
+
             if not id_list:
                 show_error_message("No items selected!")
                 return  # Exit if no items are selected
@@ -35,8 +38,9 @@ def main():
                 rename_objects(client, id_list)
 
     except CannotConnectToWaapiException:
-            show_error_message("Could not connect to Wwise Authoring API.")
-            return None
+        show_error_message("Could not connect to Wwise Authoring API.")
+        return None
+
 
 if __name__ == "__main__":
     main()

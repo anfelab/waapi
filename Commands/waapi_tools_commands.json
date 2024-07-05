@@ -51,7 +51,7 @@
       "displayName": "Assign random containers for all switches keeping the existing assignments",
       "program": "python",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
-      "args": "\"${WwiseUserAddons}/waapi-scripts/assign_switches.py\" ${id}",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/assign_switches_v2.py\" ${id}",
       "redirectOutputs": true,
       "contextMenu": {
         "basePath": "WAAPI"
@@ -88,6 +88,74 @@
       "redirectOutputs": true,
       "contextMenu": {
         "basePath": "WAAPI/Stream"
+      }
+    },
+    {
+      "id": "waapi.enable_stream_prefetch",
+      "displayName": "Enable Stream for all the children of the selected items with prefetch time",
+      "program": "python",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/stream_enabler_prefetch.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI/Stream"
+      }
+    },
+    {
+      "id": "waapi.set_prefetch",
+      "displayName": "Set Zero Latency and prefetch time in ms for all the selected items",
+      "program": "python",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/stream_prefetch_set.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI/Stream"
+      }
+    },
+    {
+      "id": "waapi.delete_empty_containers",
+      "displayName": "Delete empty containers from selection",
+      "program": "python",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/delete_empty_containers.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI"
+      }
+    },
+    {
+      "id": "waapi.copy_wu_notes_to_similar_wu",
+      "displayName": "Copy Notes from WorkUnit to same named WorkUnits",
+      "program": "python",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/copy_wu_notes_to_similar_wu.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI"
+      }
+    },
+    {
+      "id": "waapi.backup_files_to_folder",
+      "displayName": "Backup SFX items into a different folder",
+      "program": "python",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/backup_files_into_folder.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI"
+      }
+    }
+
+    ,
+    {
+      "id": "waapi.reduce_variations",
+      "displayName": "Reduce the maximum number of variations for Random Containers (objects will not be included)",
+      "program": "python",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/reduce_variations.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI"
       }
     }
     
