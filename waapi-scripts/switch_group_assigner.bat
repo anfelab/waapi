@@ -1,2 +1,2 @@
 @echo off
-py switch_group_assigner.py
+python switch_group_assigner.py

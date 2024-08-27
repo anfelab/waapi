@@ -1,0 +1,41 @@
+{
+  "version": 2,
+  "commands": [
+    {
+      "id": "waapi.switch_random_container",
+      "displayName": "Set Random Container into Switch",
+      "program": "python",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/Scripts/switch_random_container.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI"
+      }
+    },
+
+    {
+      "id": "waapi.recreate_sound_data",
+      "displayName": "Recreate Sound Data",
+      "program": "python",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/Scripts/recreate_sound_data.py\" ${WwiseProjectOriginals} ${id} ${path}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI"
+      }
+    },
+    {
+      "id": "waapi_article.copy_guid",
+      "displayName": "Copy GUID",
+      "program": "python",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/Scripts/copy_guid.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI"
+      }
+    }
+
+
+  ]
+}

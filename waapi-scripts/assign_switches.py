@@ -1,5 +1,5 @@
 from waapi import WaapiClient, CannotConnectToWaapiException
-from wwise_helpers import show_error_message, show_message, show_success_message
+from wwise_helpers import show_error_message, show_success_message
 
 
 # Set the WAAPI port
@@ -32,22 +32,22 @@ def get_children(client, container_id):
 
 def check_if_container_is_assigned(client, container_id,
                                    switch_list):  # (client, container_id,container_name,switch_list)
-    unassaigned_switches = []
+    unassigned_switches = []
     assigned_switches = []
     args = {
         "id": container_id,
     }
     result = client.call("ak.wwise.core.switchContainer.getAssignments", args)
     if result:
-        for assingment in result["return"]:
-            assigned_switches.append(assingment["stateOrSwitch"])
+        for assignment in result["return"]:
+            assigned_switches.append(assignment["stateOrSwitch"])
         print(len(assigned_switches))
     else:
         print(f"No assignments found")
 
-    unassaigned_switches = remove_values(assigned_switches, switch_list)
-    print(len(unassaigned_switches))
-    return unassaigned_switches
+    unassigned_switches = remove_values(assigned_switches, switch_list)
+    print(len(unassigned_switches))
+    return unassigned_switches
 
 
 def remove_values(list1, list2):
@@ -126,30 +126,29 @@ def main():
                     current_child_id = current_child["id"]
                     for switch in switch_list:
                         look_matching_item(client, switch["name"], switch["id"], current_child_name, current_child_id)
-                unnasigned_switches = check_if_container_is_assigned(client, container_id, switch_list)
+                unassigned_switches = check_if_container_is_assigned(client, container_id, switch_list)
 
                 if current_children:
-                    for unnasigned_switch in unnasigned_switches:
-                        unnasigned_switch_id = unnasigned_switch["id"]
-                        unnasigned_switch_name = unnasigned_switch["name"]
-                        create_result = create_container(client, container_id, container_name, unnasigned_switch_name,
-                                                         unnasigned_switch_id)
+                    for unassigned_switch in unassigned_switches:
+                        unassigned_switch_id = unassigned_switch["id"]
+                        unassigned_switch_name = unassigned_switch["name"]
+                        create_result = create_container(client, container_id, container_name, unassigned_switch_name,
+                                                         unassigned_switch_id)
 
                 else:
                     switch_list = get_switches(client, switch_group_id)
-                    unnasigned_switches = switch_list
-                    for unnasigned_switch in unnasigned_switches:
-                        unnasigned_switch_id = unnasigned_switch["id"]
-                        unnasigned_switch_name = unnasigned_switch["name"]
-                        create_result = create_container(client, container_id, container_name, unnasigned_switch_name,
-                                                         unnasigned_switch_id)
+                    unassigned_switches = switch_list
+                    for unassigned_switch in unassigned_switches:
+                        unassigned_switch_id = unassigned_switch["id"]
+                        unassigned_switch_name = unassigned_switch["name"]
+                        create_result = create_container(client, container_id, container_name, unassigned_switch_name,
+                                                         unassigned_switch_id)
             client.disconnect()
 
     except CannotConnectToWaapiException:
         show_error_message("Could not connect to Waapi: Is Wwise running and Wwise Authoring API enabled?")
-        client.disconnect()
 
-    show_success_message(f"Succesfully assigned containers for all switches!")
+    show_success_message(f"Successfully assigned containers for all switches!")
 
 
 if __name__ == "__main__":

@@ -14,31 +14,31 @@ def get_sound_children(client, id):
     waql = f'from object "{id}" select descendants where (type = "Sound" or type = "Voice") and sound:OriginalWavFilePath != ""'
     args = {
         "waql": waql,
-        "options": {"return": ["id", "name", "sound:originalWavFilePath"]}
+        "options": {"return": ["id", "name", "sound:originalWavFilePath","parent"]}
     }
     result = client.call("ak.wwise.core.object.get", args)
     if result:
         backup_files = []
-        print(result["return"])
         for item in result["return"]:
-            backup_files.append(item["sound:originalWavFilePath"])
+            backup_obj = {"file": item["sound:originalWavFilePath"], "folder": item["parent"]["name"]}
+            backup_files.append(backup_obj)
         return backup_files
 
 
 def backup_files(files):
-    filenames = []
+    backup_files = []
     files_copied = 0
     for file in files:
-        filename = file.split("\\")[-1]
-        filenames.append(filename)
-    folder_name = os.path.commonprefix(filenames)
-
-    if folder_name.endswith("_"):
-        folder_name = folder_name[:-1]
+        filename = file["file"].split("\\")[-1]
+        folder_name = file["folder"]
+        backup_file = {"filename": filename, "folder": folder_name}
+        backup_files.append(backup_file)
+        
 
     for file in files:
         # Extract the file name from the file path
-        filename = os.path.basename(file)
+        filename = os.path.basename(file["file"])
+        folder_name = file["folder"]
         # Create the full destination file path
         dest_file_path = os.path.join(destination_folder, folder_name)
         path_exist = os.path.exists(dest_file_path)
@@ -48,7 +48,7 @@ def backup_files(files):
         if os.path.exists(dest_file_path):
             continue
         # Copy the file to the new destination
-        shutil.copy(file, dest_file_path)
+        shutil.copy(file["file"], dest_file_path)
         files_copied += 1
 
     return files_copied

@@ -1,5 +1,5 @@
-from waapi import WaapiClient, CannotConnectToWaapiException
-from wwise_helpers import set_client, get_selected_items, get_selected_items_type, show_error_message, show_message, \
+from waapi import CannotConnectToWaapiException
+from wwise_helpers import set_client, get_selected_items, get_selected_items_type, show_error_message, \
     show_success_message, ask_user_input_str
 
 

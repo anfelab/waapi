@@ -1,10 +1,11 @@
-from waapi import WaapiClient, CannotConnectToWaapiException
-from wwise_helpers import show_error_message, show_message, show_success_message, set_client
+from waapi import CannotConnectToWaapiException
+from wwise_helpers import show_error_message, show_success_message, set_client
 from wwise_helpers import get_selected_items
 
 
 def delete_empty_containers(client, selected_obj_id):
-    waql = f'from object "{selected_obj_id}" select descendants where type = "RandomSequenceContainer" and childrenCount = 0'
+    waql = f'from object "{selected_obj_id}" select descendants where (type = "RandomSequenceContainer" or ' \
+           f'type = "SwitchContainer") and childrenCount = 0'
     args = {
         "waql": waql
     }

@@ -3,6 +3,11 @@ import tkinter as tk
 from tkinter import messagebox, simpledialog
 from waapi import WaapiClient, CannotConnectToWaapiException
 
+try:
+    from ctypes import windll
+    windll.shcore.SetProcessDpiAwareness(1)
+except:
+    pass
 
 def set_client(ip="127.0.0.1", port=8080):
     waapi_port = f"ws://{ip}:{port}/waapi"

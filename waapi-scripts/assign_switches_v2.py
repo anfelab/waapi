@@ -74,19 +74,26 @@ def create_container(client, container_id, switch_name, switch_id):
 
 # Look for similar named containers
 def search_matching_container(client, container_id, not_assigned):
-    # match = switch_name.lower() in child_name.lower()
-    # if match:
-    #     assign_switch(client, current_child_id, switch_id)
-
+    assigned = 0
     waql = f'from object "{container_id}" select children'
     args = {
         "waql": waql
     }
     result = client.call("ak.wwise.core.object.get", args)
-    for item in not_assigned:
-        for i in result["return"]:
-            if item["name"].lower() in i["name"].lower():
-                assign_switch(client, i["id"], item["id"])
+    # print(not_assigned)
+    for child in result["return"]:
+        child_name = child["name"]
+        # print(child_name)
+        for item in not_assigned:
+            switch_name = item["name"]
+            # print(switch_name)
+            # print(f"Checking if '{switch_name.lower()}' is in '{child_name.lower()}'")  # Debug print
+            if switch_name.lower() in child_name.lower():
+                # print(f"MATCH in {switch_name} and {child_name}")
+                assign_switch(client, child["id"], item["id"])
+                not_assigned.remove(item)  # Remove the item from the not_assigned list
+                assigned += 1
+    return assigned
 
 
 # Assign container to switch:
@@ -151,28 +158,28 @@ def main():
                 for container in children_switch_containers:
                     switch_containers.append(container)
 
+            changed = 0
             for container in switch_containers:
                 container_id = container["id"]
                 switch_group = get_switch_group(client, container_id)
                 not_assigned = get_assignments(client, container_id, switch_group["id"])
-                search_matching_container(client, container_id, not_assigned)
+                # Call search_matching_container before creating new containers
+                assigned = search_matching_container(client, container_id, not_assigned)
                 for item in not_assigned:
                     switch_id = item["id"]
                     switch_name = item["name"]
                     create_containers(client, switch_name, switch_id, container_id)
+                    changed += 1
+                changed += assigned
+            # print(changed)
 
-        if not_assigned:
-            show_success_message(f"Successfully assigned containers for all switches!")
+        if changed:
+            show_success_message(f"Successfully assigned containers for {changed} switches!")
         else:
             show_error_message("No switches were assigned!")
 
     except CannotConnectToWaapiException:
         show_error_message("Could not connect to Waapi: Is Wwise running and Wwise Authoring API enabled?")
-
-    finally:
-        if client.is_connected():
-            client.disconnect()
-            show_success_message("Session closed gracefully.")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
-from waapi import WaapiClient, CannotConnectToWaapiException
-from wwise_helpers import show_error_message, show_message, show_success_message, set_client, get_selected_items
+from waapi import CannotConnectToWaapiException
+from wwise_helpers import show_error_message, show_success_message, set_client, get_selected_items
 
 
 def get_sound_or_voice_children(client, item_id):
