@@ -12,7 +12,7 @@ if not destination_folder:
 
 
 def get_sound_children(client, id):
-    waql = f'from object "{id}" select descendants where (type = "Sound" or type = "Voice") and sound:OriginalWavFilePath != ""'
+    waql = f'from object "{id}" select this, descendants where (type = "Sound" or type = "Voice") and sound:OriginalWavFilePath != ""'
     args = {
         "waql": waql,
         "options": {"return": ["id", "name", "sound:originalWavFilePath","parent"]}

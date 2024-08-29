@@ -5,7 +5,7 @@ import pyloudnorm as pyln
 
 
 def get_paths_and_parent(client, item_id):
-    waql = f'from object "{item_id}" select descendants where type = "Sound" and sound:OriginalWavFilePath != ""'
+    waql = f'from object "{item_id}" select this, descendants where type = "Sound" and sound:OriginalWavFilePath != ""'
     args = {
         "waql": waql,
         "options": {"return": ["id", "name", "sound:originalWavFilePath","parent"]}

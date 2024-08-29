@@ -4,7 +4,7 @@ from wwise_helpers import show_error_message, show_success_message, set_client, 
 
 
 def get_sound_or_voice_children(client, item_id):
-    waql = f'$ from object "{item_id}" select descendants where type = "Sound" or "Voice"'
+    waql = f'$ from object "{item_id}" select this, descendants where type = "Sound" or "Voice"'
     args = {
         "waql": waql
     }

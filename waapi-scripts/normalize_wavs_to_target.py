@@ -4,7 +4,7 @@ from pydub import AudioSegment
 
 
 def get_wavs(client, item_id):
-    waql = f'from object "{item_id}" select descendants where type = "Sound" and Notes != "@ignore"'
+    waql = f'from object "{item_id}" select this, descendants where type = "Sound" and Notes != "@ignore"'
     args = {
         "waql": waql,
         "options": {"return": ["id", "name", "parent", "volume", "sound:OriginalWavFilePath"]}

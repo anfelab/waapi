@@ -4,7 +4,7 @@ from pydub import AudioSegment
 
 
 def get_volume_dif(client, item_id):
-    waql = f'from object "{item_id}" select descendants where (type = "Sound" or type = "Voice") ' \
+    waql = f'from object "{item_id}" select this, descendants where (type = "Sound" or type = "Voice") ' \
            f'and sound:OriginalWavFilePath != ""'
     args = {
         "waql": waql,

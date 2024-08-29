@@ -3,7 +3,7 @@ from wwise_helpers import show_error_message, set_client, get_selected_items, sh
 
 
 def get_sfx(client, item):
-    waql = f'from object "{item[0]}" select descendants where type = "Sound"'
+    waql = f'from object "{item[0]}" select this, descendants where type = "Sound"'
     args = {
         "waql": waql
     }

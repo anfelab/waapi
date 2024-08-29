@@ -3,7 +3,7 @@ from wwise_helpers import show_error_message, show_message, show_success_message
 
 
 def check_for_unused(client, item_id):
-    waql = f'from object "{item_id}" select descendants where Inclusion = false and ' \
+    waql = f'from object "{item_id}" select this, descendants where Inclusion = false and ' \
            f'(parent.type = "ActorMixer" or parent.type = "Folder")'
     args = {
         "waql": waql,

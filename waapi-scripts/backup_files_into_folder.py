@@ -11,7 +11,7 @@ if not destination_folder:
 
 
 def get_sound_children(client, id):
-    waql = f'from object "{id}" select descendants where (type = "Sound" or type = "Voice") and sound:OriginalWavFilePath != ""'
+    waql = f'from object "{id}" select this, descendants where (type = "Sound" or type = "Voice") and sound:OriginalWavFilePath != ""'
     args = {
         "waql": waql,
         "options": {"return": ["id", "name", "sound:originalWavFilePath","parent"]}
@@ -27,7 +27,7 @@ def get_sound_children(client, id):
 
 def backup_files(files):
     backup_files = []
-    files_copied = 0
+    files_copied = len(files)
     for file in files:
         filename = file["file"].split("\\")[-1]
         folder_name = file["folder"]
@@ -49,7 +49,6 @@ def backup_files(files):
             continue
         # Copy the file to the new destination
         shutil.copy(file["file"], dest_file_path)
-        files_copied += 1
 
     return files_copied
 

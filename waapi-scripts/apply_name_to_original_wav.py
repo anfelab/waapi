@@ -5,7 +5,7 @@ import os
 
 def get_wav_paths(client, item_id):
     args = {
-        "waql": f'from object "{item_id}" select descendants where type = "Sound" and sound:OriginalWavFilePath != "" ',
+        "waql": f'from object "{item_id}" select this, descendants where type = "Sound" and sound:OriginalWavFilePath != "" ',
         "options": {"return": ["id", "name", "path", "sound:originalWavFilePath"]}
     }
     result = client.call("ak.wwise.core.object.get", args)

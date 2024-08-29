@@ -6,7 +6,7 @@ var_num = ask_user_input_num("Variations", "Insert MAX number of variations: ")
 
 
 def reduce_variations(client, item_id):
-    waql = f'from object "{item_id}" select descendants where type = "Sound"'
+    waql = f'from object "{item_id}" select this, descendants where type = "Sound"'
     args = {
         "waql": waql
     }
