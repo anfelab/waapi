@@ -1,29 +1,22 @@
 from waapi import CannotConnectToWaapiException
 from wwise_helpers import show_error_message, show_message, show_success_message, set_client
 
+client = set_client()
+
 
 # Create a function using waapi to get the id, name and path of the selected items in Wwise
-def get_selected_items(client):
+def get_selected_items():
     args = {"options": {"return": ["id", "name", "path"]}}
     result = client.call("ak.wwise.ui.getSelectedObjects", args)
-    selected_items = []
-    if "objects" in result:
-        for obj in result["objects"]:
-            obj_name = obj["name"]
-            obj_id = obj["id"]
-            obj_path = obj["path"]
-            selected_items.append((obj_id, obj_name, obj_path))
-        if not selected_items:
-            show_error_message("No items selected.")
-            return None
-        return selected_items
+    if result:
+        return result["objects"]
     else:
         show_error_message("No items selected.")
         return None
 
 
 # Create a function to create a Play event for the selected items
-def create_play_event(client, item_id, item_name, wu_name, path):
+def create_play_event(item_id, item_name, wu_name, path="\\Events\\Default Work Unit"):
     try:
         args = {
             "parent": f"{path}",
@@ -53,10 +46,10 @@ def create_play_event(client, item_id, item_name, wu_name, path):
 
 
 # Create a function to create a Stop event for the selected items
-def create_stop_event(client, item_id, item_name, wu_name):
+def create_stop_event(item_id, item_name, wu_name, path="\\Events\\Default Work Unit"):
     try:
         args = {
-            "parent": "\\Events\\Default Work Unit",
+            "parent": path,
             "type": "Folder",
             "name": f"{wu_name}",
             "onNameConflict": "merge",
@@ -84,7 +77,7 @@ def create_stop_event(client, item_id, item_name, wu_name):
 
 
 # Create a function to check if the selected item or one of its children is looping
-def is_looping(client, item_id):
+def is_looping(item_id):
     is_loop = False
     try:
         args = {
@@ -103,7 +96,7 @@ def is_looping(client, item_id):
 
 
 # create a function to retrieve the name of the Work Unit of the selected item
-def get_work_unit_name(client, item_id):
+def get_work_unit_name(item_id):
     work_unit_name = []
     try:
         args = {
@@ -120,8 +113,8 @@ def get_work_unit_name(client, item_id):
         print(f'Error: {e}')
 
 
-def define_event_path(client, wu_name):
-    waql = f'from object "\Events" select descendants where type = "workunit" and name ="{wu_name}"'
+def define_event_path(wu_name):
+    waql = f'from object "\\Events" select descendants where type = "workunit" and name ="{wu_name}"'
     try:
         args = {
             "waql": waql,
@@ -136,24 +129,19 @@ def define_event_path(client, wu_name):
 
 
 def main():
-    client = set_client()
     event_created = False  # Add a flag for event creation
     try:
         with client:
-            selected_items = get_selected_items(client)
+            selected_items = get_selected_items()
             for item in selected_items:
-                item_id = item[0]
-                item_name = item[1]
-                wu_name = get_work_unit_name(client, item_id)
-                path = define_event_path(client, wu_name)
-                if not path:
-                    path = "\\Events\\Default Work Unit"
-                play_event = create_play_event(client, item_id, item_name, wu_name, path)
+                wu_name = get_work_unit_name(item["id"])
+                path = ""
+                play_event = create_play_event(item["id"], item["name"], wu_name, path)
                 if play_event:  # If an event is created, set the flag to True
                     event_created = True
-                is_loop = is_looping(client, item_id)
+                is_loop = is_looping(item["id"])
                 if is_loop:
-                    stop_event = create_stop_event(client, item_id, item_name, wu_name, path)
+                    stop_event = create_stop_event(item["id"], item["name"], wu_name, path)
                     if stop_event:  # If an event is created, set the flag to True
                         event_created = True
             if event_created:  # If the flag is True, show the success message
