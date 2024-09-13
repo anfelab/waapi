@@ -25,13 +25,17 @@ def get_switch_containers(client, id):
 
 # Get the SwitchGroup or ID for the items
 def get_switch_group(client, container_id):
+    waql = f'from object "{container_id}" select this, descendants where SwitchGroupOrStateGroup != "False"'
     args = {
-        "from": {"id": [container_id]},
+        "waql": waql,
         "options": {"return": ["SwitchGroupOrStateGroup"]}
     }
     result = client.call("ak.wwise.core.object.get", args)
-    if result:
+    if result["return"]:
         return result["return"][0]["SwitchGroupOrStateGroup"]
+    else:
+        show_error_message(f"No switch group was assigned to {container_id}")
+        raise ValueError(f"No switch group was assigned to {container_id}")
 
 
 # Get the switches that are not assigned:
@@ -134,7 +138,7 @@ def create_containers(client, switch_name, switch_id, container_id):
     create_result = client.call("ak.wwise.core.object.create", container_args)
     new_cont_id = create_result["id"]
     if create_result:
-        print(f"Created Random Container [{new_container_name}] and assigned to switch [{switch_name}]")
+        # print(f"Created Random Container [{new_container_name}] and assigned to switch [{switch_name}]")
         assign_switch(client, new_cont_id, switch_id)
         objects_created += 1
 
@@ -155,13 +159,17 @@ def main():
                 if type == "SwitchContainer":
                     switch_containers.append(item)
                 children_switch_containers = get_switch_containers(client, id)
-                for container in children_switch_containers:
-                    switch_containers.append(container)
+                if children_switch_containers:
+                    for container in children_switch_containers:
+                        switch_containers.append(container)
 
             changed = 0
             for container in switch_containers:
                 container_id = container["id"]
                 switch_group = get_switch_group(client, container_id)
+                if not switch_group:
+                    show_error_message(f"No switch group was assigned for {container_id}")
+                    continue
                 not_assigned = get_assignments(client, container_id, switch_group["id"])
                 # Call search_matching_container before creating new containers
                 assigned = search_matching_container(client, container_id, not_assigned)
