@@ -2,6 +2,8 @@ import pyperclip
 import tkinter as tk
 from tkinter import messagebox, simpledialog
 from waapi import WaapiClient, CannotConnectToWaapiException
+import xml.etree.ElementTree as ET
+import os
 
 try:
     from ctypes import windll
@@ -9,7 +11,15 @@ try:
 except:
     pass
 
-def set_client(ip="127.0.0.1", port=8080):
+def set_client(ip="127.0.0.1"):
+    wwise_settings = os.getenv('APPDATA')+r"\Audiokinetic\Wwise\Wwise.wsettings"
+    tree = ET.ElementTree(file = wwise_settings)
+    root = tree.getroot()
+    for child in root[0][0][0]:
+        if 'Waapi\\WampPort' in child.attrib["Name"]:
+            port = (child.attrib["Value"])
+        else:
+            port = "8080"
     waapi_port = f"ws://{ip}:{port}/waapi"
     print(f"Client set to: {waapi_port}")
     client = WaapiClient(waapi_port)
@@ -96,3 +106,6 @@ def get_selected_items_type(client, *args):
 def execute_func_times(func, times):
     for i in range(times):
         func()
+
+
+set_client()
