@@ -106,6 +106,3 @@ def get_selected_items_type(client, *args):
 def execute_func_times(func, times):
     for i in range(times):
         func()
-
-
-set_client()
