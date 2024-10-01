@@ -279,6 +279,17 @@
       "mainMenu": {
         "basePath": "WAAPI/Loudness"
       }
+    },
+    {
+      "id": "waapi.change_parent_type",
+      "displayName": "Change parent type to a different type",
+      "program": "python",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/convert_parent_to_type.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI/Organize"
+      }
     }
 
     

@@ -199,3 +199,6 @@ if __name__ == "__main__":
             root.mainloop()
         except CannotConnectToWaapiException:
             show_error_message("Could not connect to Wwise Authoring API.")
+
+        finally:
+            client.disconnect()

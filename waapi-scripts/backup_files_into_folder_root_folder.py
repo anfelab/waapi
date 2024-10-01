@@ -2,8 +2,8 @@ from waapi import CannotConnectToWaapiException
 from wwise_helpers import show_error_message, show_message, show_success_message, set_client, get_selected_items, \
     ask_user_input_str
 import os
-import re
 import shutil
+import re
 
 destination_folder = ask_user_input_str("Enter Path",
                                         "Enter the path to backup the files: \n Default = D:\\file_backup")
@@ -21,14 +21,15 @@ def get_sound_children(client, id):
     if result:
         backup_files = []
         for item in result["return"]:
-            backup_obj = {"file": item["sound:originalWavFilePath"], "folder": item["parent"]["name"]}
+            folder_name = re.sub(r'[_\d]+$', '',item["name"])
+            backup_obj = {"file": item["sound:originalWavFilePath"], "folder": folder_name}
             backup_files.append(backup_obj)
         return backup_files
 
 
 def backup_files(files):
     backup_files = []
-    files_copied = 0
+    files_copied = len(files)
     for file in files:
         filename = file["file"].split("\\")[-1]
         folder_name = file["folder"]
@@ -39,28 +40,18 @@ def backup_files(files):
     for file in files:
         # Extract the file name from the file path
         filename = os.path.basename(file["file"])
-        if "type" in filename:
-            pattern = r'_type\d{2}(_\d{2})?\.wav'
-            folder_name = re.sub(pattern,"",filename)
-        else:
-            pattern = r'(_\d{2})?\.wav'
-            folder_name = re.sub(pattern,"",filename)
-        
-        print(folder_name)
         # Create the full destination file path
-        dest_file_path = os.path.join(destination_folder, folder_name)
+        dest_file_path = os.path.join(destination_folder)
         path_exist = os.path.exists(dest_file_path)
         if not path_exist:
             os.mkdir(dest_file_path)
-        dest_file_path = os.path.join(destination_folder, folder_name, filename)
+        dest_file_path = os.path.join(destination_folder,filename)
         if os.path.exists(dest_file_path):
             continue
         # Copy the file to the new destination
         shutil.copy(file["file"], dest_file_path)
-        files_copied += 1
 
     return files_copied
-
 
 
 def main():
@@ -88,6 +79,6 @@ def main():
     
     finally:
         client.disconnect()
-
+        
 if __name__ == "__main__":
     main()

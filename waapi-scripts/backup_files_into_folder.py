@@ -3,6 +3,7 @@ from wwise_helpers import show_error_message, show_message, show_success_message
     ask_user_input_str
 import os
 import shutil
+import re
 
 destination_folder = ask_user_input_str("Enter Path",
                                         "Enter the path to backup the files: \n Default = D:\\file_backup")
@@ -20,7 +21,8 @@ def get_sound_children(client, id):
     if result:
         backup_files = []
         for item in result["return"]:
-            backup_obj = {"file": item["sound:originalWavFilePath"], "folder": item["parent"]["name"]}
+            folder_name = re.sub(r'[_\d]+$', '',item["name"])
+            backup_obj = {"file": item["sound:originalWavFilePath"], "folder": folder_name}
             backup_files.append(backup_obj)
         return backup_files
 
@@ -75,7 +77,9 @@ def main():
     except CannotConnectToWaapiException:
         show_error_message("Could not connect to Wwise Authoring API.")
         return None
-
+    
+    finally:
+        client.disconnect()
 
 if __name__ == "__main__":
     main()

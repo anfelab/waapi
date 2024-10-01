@@ -78,8 +78,11 @@ def ask_user_input_str(title="Input", message="Enter the new name"):
     return number_of_copies
 
 
-def get_selected_items_type(client, type):
-    args = {"options": {"return": [type]}}
+def get_selected_items_type(client, *args):
+    return_args = ["id","name"]
+    if args:
+        return_args.extend(args)
+    args = {"options": {"return": return_args}}
     result = client.call("ak.wwise.ui.getSelectedObjects", args)
     selected_items = []
     if result:
