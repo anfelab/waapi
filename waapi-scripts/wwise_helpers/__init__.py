@@ -11,15 +11,15 @@ try:
 except:
     pass
 
+
 def set_client(ip="127.0.0.1"):
+    port = "8080"
     wwise_settings = os.getenv('APPDATA')+r"\Audiokinetic\Wwise\Wwise.wsettings"
     tree = ET.ElementTree(file = wwise_settings)
     root = tree.getroot()
     for child in root[0][0][0]:
         if 'Waapi\\WampPort' in child.attrib["Name"]:
             port = (child.attrib["Value"])
-        else:
-            port = "8080"
     waapi_port = f"ws://{ip}:{port}/waapi"
     print(f"Client set to: {waapi_port}")
     client = WaapiClient(waapi_port)
