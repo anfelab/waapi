@@ -290,6 +290,17 @@
       "contextMenu": {
         "basePath": "WAAPI/Organize"
       }
+    },
+    {
+      "id": "waapi.delete_from_event_cont_with_string",
+      "displayName": "Remove references containing string from event",
+      "program": "python",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/delete_from_event_cont_with_string.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI/Events"
+      }
     }
 
     
