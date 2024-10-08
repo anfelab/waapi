@@ -62,7 +62,7 @@
       "displayName": "Create Play and Stop Events for all selected containers (1sec Fade for Stop)",
       "program": "python",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
-      "args": "\"${WwiseUserAddons}/waapi-scripts/event_creator.py\" ${id}",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/event_creator_v3.py\" ${id}",
       "redirectOutputs": true,
       "contextMenu": {
         "basePath": "WAAPI/Events"
