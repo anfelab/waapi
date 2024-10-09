@@ -1,12 +1,5 @@
 from waapi import WaapiClient, CannotConnectToWaapiException
-from wwise_helpers import show_error_message, ask_user_input_str, get_selected_items
-
-
-# Set the WAAPI client
-def set_client(ip="127.0.0.1", port=8080):
-    waapi_port = f"ws://{ip}:{port}/waapi"
-    client = WaapiClient(waapi_port)
-    return client
+from wwise_helpers import show_error_message, ask_user_input_str, get_selected_items, set_client, show_success_message
 
 
 def rename_objects(client, id_list):
@@ -21,7 +14,7 @@ def rename_objects(client, id_list):
             "value": f"{new_name}{suffix}"
         }
         client.call("ak.wwise.core.object.setName", args)
-    print(f"Renamed {total_items} items.")
+    show_success_message(f"Renamed {total_items} items.")
 
 
 def main():
