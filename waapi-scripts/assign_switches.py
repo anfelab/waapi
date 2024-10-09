@@ -1,15 +1,8 @@
 from waapi import WaapiClient, CannotConnectToWaapiException
-from wwise_helpers import show_error_message, show_success_message
+from wwise_helpers import show_error_message, show_success_message, set_client
 
 
 # Set the WAAPI port
-def set_client(ip="127.0.0.1", port=8080):
-    waapi_port = f"ws://{ip}:{port}/waapi"
-    print(f"Client set to: {waapi_port}")
-    client = WaapiClient(waapi_port)
-    return client
-
-
 def get_selected_items(client):
     selected_items = []
     args = {"options": {"return": ["id", "name", "SwitchGroupOrStateGroup"]}}

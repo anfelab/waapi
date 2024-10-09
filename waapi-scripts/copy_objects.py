@@ -27,7 +27,7 @@ def main():
                 return
             times = ask_user_input_num()  # Ask once for all items
             for item in selected_items:
-                object_id = item[0]  # Assuming each item has an 'id' key
+                object_id = item["id"]  # Assuming each item has an 'id' key
                 for _ in range(times):
                     copy_objects(client, object_id)
                 show_success_message(f"Item {item[1]} copied {times} times!")

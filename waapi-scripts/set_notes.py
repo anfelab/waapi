@@ -18,7 +18,7 @@ def main():
             notes = ask_user_input_str("Input", "Enter the notes to inset to the items: ")
             if notes:
                 for item in selected_items:
-                    item_id = item[0]
+                    item_id = item["id"]
                     set_notes(client, item_id, notes)
 
     except CannotConnectToWaapiException:

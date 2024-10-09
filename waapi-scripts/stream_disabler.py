@@ -50,7 +50,7 @@ def main():
         with client:
             selected_items = get_selected_items(client)
             for item in selected_items:
-                item_id = item[0]
+                item_id = item["id"]
                 children = get_sound_or_voice_children(client, item_id)
                 changed_items = 0
                 for child in children:

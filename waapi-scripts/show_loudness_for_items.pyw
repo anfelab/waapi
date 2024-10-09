@@ -56,7 +56,7 @@ def main():
         with client:
             selected_items = get_selected_items(client)
             for item in selected_items:
-                item_id = item[0]
+                item_id = item["id"]
                 objects = get_paths_and_parent(client, item_id)
                 objects = get_loudness_for_wavs(client, objects)
                 calculate_average_loudness(client, objects)

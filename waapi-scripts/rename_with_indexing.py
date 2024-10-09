@@ -1,5 +1,5 @@
 from waapi import WaapiClient, CannotConnectToWaapiException
-from wwise_helpers import show_error_message, ask_user_input_str, get_selected_items_type
+from wwise_helpers import show_error_message, ask_user_input_str, get_selected_items
 
 
 # Set the WAAPI client
@@ -28,7 +28,7 @@ def main():
     try:
         client = set_client()
         with client:
-            id_list = get_selected_items_type(client, "id")
+            id_list = get_selected_items(client, "id")
 
             if not id_list:
                 show_error_message("No items selected!")

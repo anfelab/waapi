@@ -142,8 +142,8 @@ def main():
         with client:
             selected_items = get_selected_items(client)
             for item in selected_items:
-                item_id = item[0]
-                item_name = item[1]
+                item_id = item["id"]
+                item_name = item["name"]
                 wu_name = get_work_unit_name(client, item_id)
                 path = define_event_path(client, wu_name)
                 if not path:

@@ -67,8 +67,8 @@ def move_objects(client, children_list, created_objs):
     parent_names = [obj["name"] for obj in created_objs]
     parent_ids = [obj["id"] for obj in created_objs]
     for child in children_list:
-        child_name = child[1]
-        child_id = child[0]
+        child_name = child["name"]
+        child_id = child["id"]
         match_found, idx_match = look_for_match(child_name, parent_names)  # Use the revised look_for_match function
         if match_found:
             # print(f"Found a match for '{child_name}' in index {idx_match}")

@@ -1,13 +1,6 @@
-from wwise_helpers import show_error_message, set_client, show_success_message
+from wwise_helpers import show_error_message, set_client, show_success_message, get_selected_items
 import os
 from waapi import WaapiClient, CannotConnectToWaapiException
-
-
-def get_selected_objects(client):
-    # Get selected objects
-    result = client.call("ak.wwise.ui.getSelectedObjects")
-    return result["objects"]
-
 
 def get_wav_path(client, obj_id):
     args = {
@@ -38,7 +31,7 @@ def main():
     try:
         with client:
             # Get selected objects
-            selected_objects = get_selected_objects(client)
+            selected_objects = get_selected_items(client)
             for obj in selected_objects:
                 obj_id = obj["id"]
                 wav_path = get_wav_path(client, obj_id)

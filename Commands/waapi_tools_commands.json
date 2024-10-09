@@ -4,7 +4,7 @@
     {
       "id": "waapi.rename_selected_objects_with_clipboard",
       "displayName": "Rename selected objects with clipboard contents",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/rename_selected_objects_with_clipboard.py\" ${id}",
       "redirectOutputs": true,
@@ -15,7 +15,7 @@
     {
       "id": "waapi.copy_objects",
       "displayName": "Copy selected item X times",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/copy_objects.py\" ${id}",
       "redirectOutputs": true,
@@ -26,7 +26,7 @@
     {
       "id": "waapi.rename_with_indexing",
       "displayName": "Rename selected objects with input",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/rename_with_indexing.py\" ${id}",
       "redirectOutputs": true,
@@ -38,7 +38,7 @@
     {
       "id": "waapi.create_parent_with_name",
       "displayName": "Create parent of any type for items with similar names",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/create_parent_with_name.py\" ${id}",
       "redirectOutputs": true,
@@ -49,7 +49,7 @@
     {
       "id": "waapi.assign_switches",
       "displayName": "Assign random containers for all switches keeping the existing assignments",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/assign_switches_v2.py\" ${id}",
       "redirectOutputs": true,
@@ -60,7 +60,7 @@
     {
       "id": "waapi.create_events",
       "displayName": "Create Play and Stop Events for all selected containers (1sec Fade for Stop)",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/event_creator_v3.py\" ${id}",
       "redirectOutputs": true,
@@ -71,7 +71,7 @@
     {
       "id": "waapi.enable_stream",
       "displayName": "Enable Stream for all the children of the selected items",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/stream_enabler.py\" ${id}",
       "redirectOutputs": true,
@@ -82,7 +82,7 @@
     {
       "id": "waapi.disable_stream",
       "displayName": "Disable Stream for all the children of the selected items",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/stream_disabler.py\" ${id}",
       "redirectOutputs": true,
@@ -93,7 +93,7 @@
     {
       "id": "waapi.enable_stream_prefetch",
       "displayName": "Enable Stream for all the children of the selected items with prefetch time",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/stream_enabler_prefetch.py\" ${id}",
       "redirectOutputs": true,
@@ -104,7 +104,7 @@
     {
       "id": "waapi.set_prefetch",
       "displayName": "Set Zero Latency and prefetch time in ms for all the selected items",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/stream_prefetch_set.py\" ${id}",
       "redirectOutputs": true,
@@ -115,7 +115,7 @@
     {
       "id": "waapi.delete_empty_containers",
       "displayName": "Delete empty containers from selection",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/delete_empty_containers.py\" ${id}",
       "redirectOutputs": true,
@@ -126,7 +126,7 @@
     {
       "id": "waapi.copy_wu_notes_to_similar_wu",
       "displayName": "Copy Notes from WorkUnit to same named WorkUnits",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/copy_wu_notes_to_similar_wu.py\" ${id}",
       "redirectOutputs": true,
@@ -137,7 +137,7 @@
     {
       "id": "waapi.backup_files_to_folder",
       "displayName": "Backup SFX items into a different folder",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/backup_files_into_folder.py\" ${id}",
       "redirectOutputs": true,
@@ -150,7 +150,7 @@
     {
       "id": "waapi.reduce_variations",
       "displayName": "Reduce the maximum number of variations for Random Containers (objects will not be included)",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/reduce_variations.py\" ${id}",
       "redirectOutputs": true,
@@ -161,7 +161,7 @@
     {
       "id": "waapi.apply_volume_to_wav_and_reset_faders",
       "displayName": "Apply all volume changes (including parents) to WAV file and reset faders (type @ignore in notes to ignore an item)",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/apply_volume_to_wav_and_reset_faders.py\" ${id}",
       "redirectOutputs": true,
@@ -172,7 +172,7 @@
     {
       "id": "waapi.apply_name_to_original_wav",
       "displayName": "Rename original WAV file according to Wwise SFX name",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/apply_name_to_original_wav.py\" ${id}",
       "redirectOutputs": true,
@@ -183,7 +183,7 @@
     {
       "id": "waapi.check_for_unused_events",
       "displayName": "Check for events with unused sources and set as Not Included",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/set_unused_events.py\" ${id}",
       "redirectOutputs": true,
@@ -194,7 +194,7 @@
     {
       "id": "waapi.move_unused",
       "displayName": "Move unused items to a unused folder",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/move_unused.py\" ${id}",
       "redirectOutputs": true,
@@ -205,7 +205,7 @@
     {
       "id": "waapi.set_notes",
       "displayName": "Set Notes for selected items",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/set_notes.py\" ${id}",
       "redirectOutputs": true,
@@ -216,7 +216,7 @@
     {
       "id": "waapi.delete_sfx_from_selection",
       "displayName": "Delete all sounds from selected items",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/delete_sfx_from_selection.py\" ${id}",
       "redirectOutputs": true,
@@ -227,7 +227,7 @@
     {
       "id": "waapi.switch_assigner_for_containers",
       "displayName": "Open a batch Switch Assigner for Switch containers",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/switch_group_assigner.pyw\" ${id}",
       "redirectOutputs": true,
@@ -238,7 +238,7 @@
     {
       "id": "waapi.assign_switches_for_main_window",
       "displayName": "Assign random containers for all switches keeping the existing assignments",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/assign_switches_v2.py\" ${id}",
       "redirectOutputs": true,
@@ -249,7 +249,7 @@
     {
       "id": "waapi.reset_faders_from_selection",
       "displayName": "Reset all faders from selection (type @ignore in Notes to ignore an item)",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/reset_faders_from_selection.pyw\" ${id}",
       "redirectOutputs": true,
@@ -261,7 +261,7 @@
     {
       "id": "waapi.set_wav_avg_loudness_in_notes",
       "displayName": "Calculate Loudness for each item and Average Loudness for containers and set it in Notes",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/set_wav_avg_loudness_in_notes.pyw\" ${id}",
       "redirectOutputs": true,
@@ -272,7 +272,7 @@
     {
       "id": "waapi.calculate_wav_loudness",
       "displayName": "Calculate average loudness for containers and show system message",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/show_loudness_for_items.pyw\" ${id}",
       "redirectOutputs": true,
@@ -283,7 +283,7 @@
     {
       "id": "waapi.change_parent_type",
       "displayName": "Change parent type to a different type",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/convert_parent_to_type.py\" ${id}",
       "redirectOutputs": true,
@@ -294,7 +294,7 @@
     {
       "id": "waapi.delete_from_event_cont_with_string",
       "displayName": "Remove references containing string from event",
-      "program": "python",
+      "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/delete_from_event_cont_with_string.py\" ${id}",
       "redirectOutputs": true,

@@ -64,7 +64,7 @@ def main():
         with client:
             selected_items = get_selected_items(client)
             for item in selected_items:
-                id = item[0]
+                id = item["id"]
                 files = get_sound_children(client, id)
                 copied = backup_files(files)
 

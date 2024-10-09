@@ -1,5 +1,5 @@
 from waapi import CannotConnectToWaapiException
-from wwise_helpers import show_error_message, show_message, show_success_message, set_client, get_selected_items_type
+from wwise_helpers import show_error_message, show_message, show_success_message, set_client, get_selected_items
 import argparse 
 
 client = set_client()
@@ -93,7 +93,7 @@ def create_stop_event(item_id, item_name, path="\\Events\\Default Work Unit"):
 
 def main():
     with client:
-        selected = get_selected_items_type(client)
+        selected = get_selected_items(client)
         created = 0
         for item in selected:
             events_path = get_events_path(item["id"])

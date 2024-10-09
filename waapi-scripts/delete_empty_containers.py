@@ -26,7 +26,7 @@ def main():
         with client:
             selected_obj = get_selected_items(client)
             for obj in selected_obj:
-                selected_obj_id = obj[0]
+                selected_obj_id = obj["id"]
                 print(selected_obj_id)
                 deleted = delete_empty_containers(client, selected_obj_id)
         if deleted:

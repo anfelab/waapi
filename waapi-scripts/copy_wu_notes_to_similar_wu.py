@@ -22,11 +22,11 @@ def main():
     client = set_client()
     try:
         with client:
-            selected_objects = get_selected_items(client)
+            selected_objects = get_selected_items(client, "notes")
             items_changed = 0
             for item in selected_objects:
-                item_name = item[1]
-                item_notes = item[2]
+                item_name = item["name"]
+                item_notes = item["notes"]
                 workunits = search_for_similar_wu_events(client, item_name)
 
                 if workunits:

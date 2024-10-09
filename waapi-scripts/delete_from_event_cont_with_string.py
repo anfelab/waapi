@@ -41,7 +41,7 @@ def main():
             client.call("ak.wwise.core.undo.beginGroup")
             selected_items = get_selected_items(client)
             for item in selected_items:
-                delete_containers_containing_string(item[0])
+                delete_containers_containing_string(item["id"])
 
             if deleted: 
                 show_success_message(f"Deleted {deleted} references!")

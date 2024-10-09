@@ -67,7 +67,7 @@ def main():
         with client:
             selected_items = get_selected_items(client)
             for item in selected_items:
-                item_id = item[0]
+                item_id = item["id"]
                 sounds = get_wav_paths(client, item_id)
                 compare_names(client, sounds)
 

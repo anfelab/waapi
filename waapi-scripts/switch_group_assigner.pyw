@@ -97,8 +97,8 @@ def fetch_switches_for_selected_group(client, switch_group_name):
 def assign_switch_group(client, switch_group_name, default_switch_name):
     selected_items = get_selected_items(client)
     for item in selected_items:
-        item_id = item[0]
-        item_name = item[1]
+        item_id = item["id"]
+        item_name = item["name"]
         switch_group_id = get_switch_group_id(client, switch_group_name)
         switch_id = get_switch_id(client, default_switch_name, switch_group_name)
         switch_group_args = {

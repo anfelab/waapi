@@ -36,7 +36,7 @@ def main():
             selected_items = get_selected_items(client)
             changed = 0
             for item in selected_items:
-                item_id = item[0]
+                item_id = item["id"]
                 reduced = reduce_variations(client, item_id)
                 changed += len(reduced)
 

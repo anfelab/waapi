@@ -8,7 +8,7 @@ def main():
         with client:
             selected_items = get_selected_items(client)
             for item in selected_items:
-                item_id = item[0]
+                item_id = item["id"]
                 print(item_id)
                 client.call("ak.soundengine.postMsgMonitor", {"message": f"Hello Wwise!"})
 

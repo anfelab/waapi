@@ -1,5 +1,5 @@
 from waapi import CannotConnectToWaapiException
-from wwise_helpers import show_error_message, set_client, ask_user_input_str, get_selected_items_type, show_success_message
+from wwise_helpers import show_error_message, set_client, ask_user_input_str, get_selected_items, show_success_message
 
 client = set_client()
 # Define a dictionary to map abbreviations to full container names
@@ -73,7 +73,7 @@ def main():
     try:
         with client:
             changed = 0
-            selected_items = get_selected_items_type(client, "parent", "type")
+            selected_items = get_selected_items(client, "parent", "type")
             client.call("ak.wwise.core.undo.beginGroup")
             for item in selected_items:
                 rename_old_parent(item["id"], item["name"])

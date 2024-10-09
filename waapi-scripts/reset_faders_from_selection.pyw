@@ -30,7 +30,7 @@ def main():
             total_changes = 0
             selected_items = get_selected_items(client)
             for item in selected_items:
-                item_id = item[0]
+                item_id = item["id"]
                 reset_list = get_reset_list(client, item_id)
                 changed = reset_volumes(client, reset_list)
                 total_changes += changed
