@@ -36,16 +36,13 @@ def get_events_path(id) -> str:
                     
 def check_for_loop(id):
     is_loop = False
+    waql = f'from object "{id}" select this, descendants where IsLoopingEnabled'
     args = {
-            "from": {"id": [id]},
-            "transform": [{"select": ["descendants"]}],
-            "options": {"return": ["@IsLoopingEnabled"]}
+            "waql": waql
         }
     result = client.call("ak.wwise.core.object.get", args)
     if result["return"]:
-        for item in result["return"]:
-            if item["@IsLoopingEnabled"]:
-                is_loop = True
+        is_loop = True
     else:
         is_loop = False
     return is_loop
@@ -95,6 +92,7 @@ def main():
     with client:
         selected = get_selected_items(client)
         created = 0
+        client.call("ak.wwise.core.undo.beginGroup")
         for item in selected:
             events_path = get_events_path(item["id"])
             is_looping = check_for_loop(item["id"])
@@ -108,6 +106,8 @@ def main():
             show_success_message(f"{created} Events were created!")
         else: 
             show_error_message("No Events were created!")
+        
+        client.call("ak.wwise.core.undo.endGroup", {"displayName": "Create Events for selected objects in specific path"})
 
 
 if __name__ == "__main__":
