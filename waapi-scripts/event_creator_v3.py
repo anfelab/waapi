@@ -23,6 +23,7 @@ def get_events_path(id) -> str:
                 notes = obj["notes"]
                 parts = notes.split("\r\n")
                 for part in parts:
+                    part.strip()
                     if "\\Events\\" in part:
                         paths.append(part)
         if len(paths) == 1:
