@@ -301,6 +301,61 @@
       "contextMenu": {
         "basePath": "WAAPI/Events"
       }
+    },
+    {
+      "id": "waapi.create_switch_parent",
+      "displayName": "Create new Switch Container parent with same name(s)",
+      "program": "pythonw",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/create_switch_parent_no_idx.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI/Create"
+      }
+    },
+    {
+      "id": "waapi.create_random_parent",
+      "displayName": "Create new Random Container parent with same name(s)",
+      "program": "pythonw",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/create_random_parent_no_idx.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI/Create"
+      }
+    },
+    {
+      "id": "waapi.create_blend_parent",
+      "displayName": "Create new Blend Container parent with same name(s)",
+      "program": "pythonw",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/create_blend_parent_no_idx.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI/Create"
+      }
+    },
+    {
+      "id": "waapi.create_folder_parent",
+      "displayName": "Create new folder Container parent with same name(s)",
+      "program": "pythonw",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/create_folder_parent_no_idx.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI/Create"
+      }
+    },
+    {
+      "id": "waapi.create_mixer_parent",
+      "displayName": "Create new Actor Mixer Container parent with same name(s)",
+      "program": "pythonw",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/create_mixer_parent_no_idx.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI/Create"
+      }
     }
 
     

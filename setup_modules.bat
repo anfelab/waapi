@@ -4,6 +4,7 @@ python -m pip install pyperclip
 python -m pip install tk
 python -m pip install soundfile
 python -m pip install pyloudnorm
+python -m pip install pydub
 @echo off
 setlocal
 
