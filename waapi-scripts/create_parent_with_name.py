@@ -1,10 +1,10 @@
 from waapi import CannotConnectToWaapiException
-from wwise_helpers import set_client, get_selected_items, get_selected_items_type, show_error_message, \
+from wwise_helpers import set_client, get_selected_items, show_error_message, \
     show_success_message, ask_user_input_str
 
 
 def get_parent(client):
-    result = get_selected_items_type(client, "parent")
+    result = get_selected_items(client, "parent")
     parent_list = []
     for parent in result:
         parent_list.append(parent["parent"])
@@ -112,6 +112,7 @@ def main():
         if created_objs:
             move_objects(client, children_list, created_objs)
             show_success_message("New parent(s) created and children moved successfully.")
+            
     except CannotConnectToWaapiException:
         show_error_message("Could not connect to Wwise Authoring API.")
 

@@ -43,7 +43,7 @@
       "args": "\"${WwiseUserAddons}/waapi-scripts/create_parent_with_name.py\" ${id}",
       "redirectOutputs": true,
       "contextMenu": {
-        "basePath": "WAAPI"
+        "basePath": "WAAPI/Create"
       }
     },
     {
