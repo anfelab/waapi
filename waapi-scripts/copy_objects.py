@@ -1,12 +1,11 @@
 from waapi import CannotConnectToWaapiException
-from wwise_helpers import set_client, get_selected_items_type, get_selected_items, show_error_message, \
+from wwise_helpers import set_client, get_selected_items, show_error_message, \
     ask_user_input_num, show_success_message
 
 
 def copy_objects(client, object_id):
-    parent_list = get_selected_items_type(client, "parent")  # Import the list for the parent container
+    parent_list = get_selected_items(client, "parent")  # Import the list for the parent container
     if not parent_list:
-        print("Parent container not found.")
         return
     parent_id = parent_list[0]["parent"]["id"]
     args = {

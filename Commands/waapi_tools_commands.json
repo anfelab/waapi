@@ -43,7 +43,9 @@
       "args": "\"${WwiseUserAddons}/waapi-scripts/create_parent_with_name.py\" ${id}",
       "redirectOutputs": true,
       "contextMenu": {
-        "basePath": "WAAPI/Create"
+        "basePath": "WAAPI/Create",
+        "enabledFor":"Sound,SwitchContainer,RandomSequenceContainer,BlendContainer,Voice",
+        "visibleFor":"Sound,SwitchContainer,RandomSequenceContainer,BlendContainer,Voice"
       }
     },
     {
@@ -54,7 +56,9 @@
       "args": "\"${WwiseUserAddons}/waapi-scripts/assign_switches_v2.py\" ${id}",
       "redirectOutputs": true,
       "contextMenu": {
-        "basePath": "WAAPI/Switches"
+        "basePath": "WAAPI/Switches",
+        "enabledFor":"SwitchContainer",
+        "visibleFor":"SwitchContainer"
       }
     },
     {
@@ -65,7 +69,10 @@
       "args": "\"${WwiseUserAddons}/waapi-scripts/event_creator_v3.py\" ${id}",
       "redirectOutputs": true,
       "contextMenu": {
-        "basePath": "WAAPI/Events"
+        "basePath": "WAAPI/Events",
+        "enabledFor":"Sound,SwitchContainer,RandomSequenceContainer,BlendContainer,Voice",
+        "visibleFor":"Sound,SwitchContainer,RandomSequenceContainer,BlendContainer,Voice"
+        
       }
     },
     {
@@ -77,6 +84,7 @@
       "redirectOutputs": true,
       "contextMenu": {
         "basePath": "WAAPI/Stream"
+        
       }
     },
     {
@@ -188,7 +196,9 @@
       "args": "\"${WwiseUserAddons}/waapi-scripts/set_unused_events.py\" ${id}",
       "redirectOutputs": true,
       "contextMenu": {
-        "basePath": "WAAPI/Organize"
+        "basePath": "WAAPI/Events",
+        "enabledFor":"Event,WorkUnit,Folder",
+        "visibleFor":"Event,WorkUnit,Folder"
       }
     },
     {
@@ -299,7 +309,9 @@
       "args": "\"${WwiseUserAddons}/waapi-scripts/delete_from_event_cont_with_string.py\" ${id}",
       "redirectOutputs": true,
       "contextMenu": {
-        "basePath": "WAAPI/Events"
+        "basePath": "WAAPI/Events",
+        "enabledFor":"Event,WorkUnit,Folder",
+        "visibleFor":"Event,WorkUnit,Folder"
       }
     },
     {
@@ -310,7 +322,9 @@
       "args": "\"${WwiseUserAddons}/waapi-scripts/create_switch_parent_no_idx.py\" ${id}",
       "redirectOutputs": true,
       "contextMenu": {
-        "basePath": "WAAPI/Create"
+        "basePath": "WAAPI/Create",
+        "enabledFor":"Sound,SwitchContainer,RandomSequenceContainer,BlendContainer,Voice",
+        "visibleFor":"Sound,SwitchContainer,RandomSequenceContainer,BlendContainer,Voice"
       }
     },
     {
@@ -321,7 +335,9 @@
       "args": "\"${WwiseUserAddons}/waapi-scripts/create_random_parent_no_idx.py\" ${id}",
       "redirectOutputs": true,
       "contextMenu": {
-        "basePath": "WAAPI/Create"
+        "basePath": "WAAPI/Create",
+        "enabledFor":"Sound,SwitchContainer,RandomSequenceContainer,BlendContainer,Voice",
+        "visibleFor":"Sound,SwitchContainer,RandomSequenceContainer,BlendContainer,Voice"
       }
     },
     {
@@ -332,29 +348,35 @@
       "args": "\"${WwiseUserAddons}/waapi-scripts/create_blend_parent_no_idx.py\" ${id}",
       "redirectOutputs": true,
       "contextMenu": {
-        "basePath": "WAAPI/Create"
+        "basePath": "WAAPI/Create",
+        "enabledFor":"Sound,SwitchContainer,RandomSequenceContainer,BlendContainer,Voice",
+        "visibleFor":"Sound,SwitchContainer,RandomSequenceContainer,BlendContainer,Voice"
       }
     },
     {
       "id": "waapi.create_folder_parent",
-      "displayName": "Create new folder Container parent with same name(s)",
+      "displayName": "Create new Folder parent with same name(s)",
       "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/create_folder_parent_no_idx.py\" ${id}",
       "redirectOutputs": true,
       "contextMenu": {
-        "basePath": "WAAPI/Create"
+        "basePath": "WAAPI/Create",
+        "enabledFor":"Sound,SwitchContainer,RandomSequenceContainer,BlendContainer,Voice",
+        "visibleFor":"Sound,SwitchContainer,RandomSequenceContainer,BlendContainer,Voice"
       }
     },
     {
       "id": "waapi.create_mixer_parent",
-      "displayName": "Create new Actor Mixer Container parent with same name(s)",
+      "displayName": "Create new ActorMixer parent with same name(s)",
       "program": "pythonw",
       "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
       "args": "\"${WwiseUserAddons}/waapi-scripts/create_mixer_parent_no_idx.py\" ${id}",
       "redirectOutputs": true,
       "contextMenu": {
-        "basePath": "WAAPI/Create"
+        "basePath": "WAAPI/Create",
+        "enabledFor":"Sound,SwitchContainer,RandomSequenceContainer,BlendContainer,Voice",
+        "visibleFor":"Sound,SwitchContainer,RandomSequenceContainer,BlendContainer,Voice"
       }
     }
 

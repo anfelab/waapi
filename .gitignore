@@ -3,3 +3,7 @@ __pycache__/
 .DS_Store
 python-3.12.0-amd64.exe
 Commands/capcom_soundlib_commands.json
+Commands/capcom_commands.json
+script_manager/gui.py
+script_manager/script_manager.py
+waapi-scripts/json_tools/wwise_commands_json_creator.py

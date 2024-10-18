@@ -1,9 +1,7 @@
 from waapi import CannotConnectToWaapiException
 from wwise_helpers import show_error_message, show_message, show_success_message, set_client, get_selected_items, \
     ask_user_input_str
-import os
-import shutil
-import re
+import os, shutil, re
 
 destination_folder = ask_user_input_str("Enter Path",
                                         "Enter the path to backup the files: \n Default = D:\\file_backup")
