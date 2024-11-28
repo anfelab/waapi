@@ -42,17 +42,11 @@ def show_error_message(message):
 
 
 def show_success_message(message):
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showinfo("Success", message)
-    root.destroy()
 
 
 def show_message(title, message):
-    root = tk.Tk()
-    root.withdraw()
     messagebox.showinfo(title, message)
-    root.destroy()
 
 ### Returns a list with each selected object, its GUID, name and any additional arguments
 def get_selected_items(client, *args):
