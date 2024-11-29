@@ -93,10 +93,6 @@ def main():
     except CannotConnectToWaapiException:
         show_error_message("Could not connect to Wwise Authoring API.")
         return None
-    
-    finally:
-        client.disconnect()
-
 
 if __name__ == "__main__":
     main()

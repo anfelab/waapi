@@ -23,22 +23,23 @@ if not exist "%TARGET_DIR%" (
     echo Folder already exists: %TARGET_DIR%
 )
 
-:: Create a symbolic link for the Commands folder
+:: Copy the Commands folder
 if exist "%COMMANDS_SRC%" (
-    mklink /D "%TARGET_DIR%\%COMMANDS_SRC%" "%COMMANDS_SRC%"
-    echo Created symbolic link for "%COMMANDS_SRC%" in "%TARGET_DIR%"
+    xcopy "%COMMANDS_SRC%" "%TARGET_DIR%\%COMMANDS_SRC%" /E /I /Y
+    echo Copied "%COMMANDS_SRC%" to "%TARGET_DIR%\%COMMANDS_SRC%"
 ) else (
     echo Source folder "%COMMANDS_SRC%" not found.
 )
 
-:: Create a symbolic link for the waapi-scripts folder
+:: Copy the waapi-scripts folder
 if exist "%WAAPI_SCRIPTS_SRC%" (
-    mklink /D "%TARGET_DIR%\%WAAPI_SCRIPTS_SRC%" "%WAAPI_SCRIPTS_SRC%"
-    echo Created symbolic link for "%WAAPI_SCRIPTS_SRC%" in "%TARGET_DIR%"
+    xcopy "%WAAPI_SCRIPTS_SRC%" "%TARGET_DIR%\%WAAPI_SCRIPTS_SRC%" /E /I /Y
+    echo Copied "%WAAPI_SCRIPTS_SRC%" to "%TARGET_DIR%\%WAAPI_SCRIPTS_SRC%"
 ) else (
     echo Source folder "%WAAPI_SCRIPTS_SRC%" not found.
 )
 
 endlocal
+
 
 pause

@@ -1,0 +1,136 @@
+{
+    "version": 2,
+    "commands": [
+        {
+            "id": "capcom.delete_empty_containers",
+            "displayName": "Delete empty containers from selection",
+            "program": "\"${WwiseUserAddons}/Scripts/delete_empty_containers/delete_empty_containers.exe\"",
+            "args": "-id ${id}",
+            "redirectOutputs": true,
+            "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+            "contextMenu": {
+                "basePath": "Andy/Organize",
+                "enabledFor": "",
+                "visibleFor": ""
+            }
+        },
+        {
+            "id": "capcom.convert_parent_type",
+            "displayName": "Convert parent type to another container",
+            "program": "python",
+            "args": "\"${WwiseUserAddons}/MyScripts/convert_parent_type/script/convert_parent_type.py\" -id ${id} -name ${name} -parent ${parent.id} -type ${type}",
+            "redirectOutputs": true,
+            "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+            "contextMenu": {
+                "basePath": "Andy/Parent",
+                "enabledFor": "",
+                "visibleFor": ""
+            }
+        },
+        {
+            "id": "capcom.set_notes",
+            "displayName": "Set notes for selected objects",
+            "program": "python",
+            "args": "\"${WwiseUserAddons}/MyScripts/set_notes/script/set_notes.py\" -id ${id} -notes ${notes}",
+            "redirectOutputs": true,
+            "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+            "contextMenu": {
+                "basePath": "Andy/Notes",
+                "enabledFor": "",
+                "visibleFor": ""
+            }
+        },
+        {
+            "id": "capcom.reduce_variations",
+            "displayName": "Limit the number of variations for selected items",
+            "program": "python",
+            "args": "\"${WwiseUserAddons}/MyScripts/reduce_variations/script/reduce_variations.py\" -id ${id}",
+            "redirectOutputs": true,
+            "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+            "contextMenu": {
+                "basePath": "Andy/Organize",
+                "enabledFor": "",
+                "visibleFor": ""
+            }
+        },
+        {
+            "id": "capcom.event_creator",
+            "displayName": "Create events for the selected objects (with Stop for loop items) in specific folder",
+            "program": "python",
+            "args": "\"${WwiseUserAddons}/MyScripts/event_creator/script/event_creator.py\"  -id ${id}",
+            "redirectOutputs": true,
+            "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+            "contextMenu": {
+                "basePath": "Andy/Events",
+                "enabledFor": "",
+                "visibleFor": ""
+            }
+        },
+        {
+            "id": "capcom.settings_switch",
+            "displayName": "Switch Setting",
+            "program": "\"${WwiseUserAddons}/Scripts/settings_switch/settings_switch.exe\"",
+            "redirectOutputs": true,
+            "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+            "mainMenu": {
+                "basePath": "Capcom/Switch"
+            }
+        },
+        {
+            "id": "capcom.subscribe_assign_switch",
+            "displayName": "Subscribe Assign Switch",
+            "program": "\"${WwiseUserAddons}/Scripts/subscribe_assign_switch/subscribe_assign_switch.exe\"",
+            "redirectOutputs": true,
+            "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+            "mainMenu": {
+                "basePath": "Capcom/Switch"
+            }
+        },
+        {
+            "id": "capcom.switch_assigner_2",
+            "displayName": "Assign random containers for all switches keeping the existing assignments",
+            "program": "python",
+            "args": "\"${WwiseUserAddons}/MyScripts/switch_assigner_2/script/switch_assigner_2.py\" -id ${id}",
+            "redirectOutputs": true,
+            "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+            "contextMenu": {
+                "basePath": "Andy/Switches",
+                "enabledFor": "",
+                "visibleFor": ""
+            }
+        },
+        {
+            "id": "capcom.object_assigner",
+            "displayName": "Assign Switch/State to Children",
+            "program": "\"${WwiseUserAddons}/Scripts/object_assigner/object_assigner.exe\"",
+            "args": "-id ${id}",
+            "redirectOutputs": true,
+            "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+            "contextMenu": {
+                "basePath": "Capcom/Assign",
+                "enabledFor": "",
+                "visibleFor": ""
+            }
+        },
+        {
+            "id": "capcom.settings_gamesync",
+            "displayName": "GameSync Setting",
+            "program": "\"${WwiseUserAddons}/Scripts/settings_gamesync/settings_gamesync.exe\"",
+            "redirectOutputs": true,
+            "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+            "mainMenu": {
+                "basePath": "Capcom/Assign"
+            }
+        },
+        {
+            "id": "capcom.subscribe_assign",
+            "displayName": "Subscribe Assign",
+            "program": "\"${WwiseUserAddons}/Scripts/subscribe_assign/subscribe_assign.exe\"",
+            "redirectOutputs": true,
+            "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+            "mainMenu": {
+                "basePath": "Capcom/Assign"
+            }
+        }
+    ]
+}

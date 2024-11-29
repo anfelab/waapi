@@ -138,7 +138,6 @@ def create_containers(client, switch_name, switch_id, container_id):
     create_result = client.call("ak.wwise.core.object.create", container_args)
     new_cont_id = create_result["id"]
     if create_result:
-        # print(f"Created Random Container [{new_container_name}] and assigned to switch [{switch_name}]")
         assign_switch(client, new_cont_id, switch_id)
         objects_created += 1
 
@@ -179,7 +178,6 @@ def main():
                     create_containers(client, switch_name, switch_id, container_id)
                     changed += 1
                 changed += assigned
-            # print(changed)
 
         if changed:
             show_success_message(f"Successfully assigned containers for {changed} switches!")

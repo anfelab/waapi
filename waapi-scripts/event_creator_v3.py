@@ -63,8 +63,6 @@ def create_play_event(item_id, item_name, path="\\Events\\Default Work Unit"):
                     }
                 ]
     }
-            
-
     result = client.call("ak.wwise.core.object.create", args)
     return result
 
