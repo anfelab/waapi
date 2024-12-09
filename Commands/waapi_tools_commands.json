@@ -356,6 +356,17 @@
       "contextMenu": {
         "basePath": "WAAPI/Create"
       }
+    },
+    {
+      "id": "waapi.recopy_item_in_existing_places",
+      "displayName": "Re-Copy Item in previous places",
+      "program": "pythonw",
+      "startMode": "MultipleSelectionSingleProcessSpaceSeparated",
+      "args": "\"${WwiseUserAddons}/waapi-scripts/recopy_container_where_placed.py\" ${id}",
+      "redirectOutputs": true,
+      "contextMenu": {
+        "basePath": "WAAPI/Create"
+      }
     }
 
     
