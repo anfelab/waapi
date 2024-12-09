@@ -365,7 +365,7 @@
       "args": "\"${WwiseUserAddons}/waapi-scripts/recopy_container_where_placed.py\" ${id}",
       "redirectOutputs": true,
       "contextMenu": {
-        "basePath": "WAAPI/Create"
+        "basePath": "WAAPI/Containers"
       }
     }
 
