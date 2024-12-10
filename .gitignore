@@ -6,3 +6,4 @@ Commands/capcom_soundlib_commands.json
 scripts_manager/gui.py
 scripts_manager/__main__.py
 
+Commands/capcom_commands.json
