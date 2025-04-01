@@ -7,3 +7,4 @@ scripts_manager/gui.py
 scripts_manager/__main__.py
 
 Commands/capcom_commands.json
+Commands/waapi-python-tools.txt
